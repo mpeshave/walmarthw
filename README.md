@@ -48,7 +48,8 @@ To run the data pipeline components follow the steps below. RUN THE BOTH APPLCIA
 1) cd to the root directory of the project.
 2) First run the java application:
 
-java -Dcb.username=$CB_USERNAME -Dcb.passwd=$CB_PASSWD -Dtwitter.consumerKey=$TWITTER_CONSUMER_KEY \  
+java -Dcb.username=$CB_USERNAME -Dcb.passwd=$CB_PASSWD \
+-Dtwitter.consumerKey=$TWITTER_CONSUMER_KEY \  
 -Dtwitter.consumerSecret=$TWITTER_CONSUMER_SECRET \
 -Dtwitter.accessToken=$TWITTER_ACCESS_TOKEN \
 -Dtwitter.accessSecret=$TWITTER_ACCESS_SECRET \ 
