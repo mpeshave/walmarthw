@@ -66,6 +66,21 @@ spark-submit --master local[2] --driver-memory 4g \
 
 If everything is setup correctly, documents will start flowing into local couchbase instance.
 
+Output Screenshots:
+
+1) Shows the project directory setup and where the 1 minute log files will be written by the java application after
+it is trigger:
+![Image description](1.png)
+
+2) Shows state before the pipeline is started. Top: Couchbase web UI; shows there are 1141 doc added previously. 
+Bottom Left: API Java App, Bottom Right: Spark Streaming App.
+![Image description](2.png)
+
+3) Shows the state after java and spark applications are running for a couple of mins. 
+Top: Couchbase UI, number of documents pushed have increased.
+Bottom Left: Java Application showing running counts.
+Bottom Right: Spark Streaming Application running and consuming files.
+![Image description](3.png)
 
 Questions:
 
