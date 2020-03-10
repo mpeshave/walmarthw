@@ -42,5 +42,30 @@ site. These keys/tokens are to be used while running the data pipeline.
 2)  A couchbase instance setup locally. 
 3) Create a new bucket "twitter" in the local couchbase instance.
 
+NOTE: THE PIPELINE IS SETUP TO RUNNING LOCALLY AS OF NOW.
+
+To run the data pipeline components follow the steps below. RUN THE BOTH APPLCIATION FROM SAME DIR:
+1) cd to the root directory of the project.
+2) First run the java application:
+
+java -Dcb.username=$CB_USERNAME -Dcb.passwd=$CB_PASSWD -Dtwitter.consumerKey=$TWITTER_CONSUMER_KEY \  
+-Dtwitter.consumerSecret=$TWITTER_CONSUMER_SECRET \
+-Dtwitter.accessToken=$TWITTER_ACCESS_TOKEN \
+-Dtwitter.accessSecret=$TWITTER_ACCESS_SECRET \ 
+-cp ./target/walmarthw-1.0-SNAPSHOT.jar com.mpeshave.walmarthw.TwitterStreamingClient
+
+The java application will start writing files to ./log/ directory.
+
+3) Let the java application run for a couple of mins as the spark application will start looking for log files.
+4) Run spark application:
+spark-submit --master local[2] --driver-memory 4g \ 
+--conf 'spark.driver.extraJavaOptions=-Dcb.username=$CB_USERNAME -Dcb.passwd=$CB_PASSWD' \
+--class com.mpeshave.walmarthw.TwitterStreamingIngest ./target/walmarthw-1.0-SNAPSHOT.jar
+
+
+
+
+
+
  
  

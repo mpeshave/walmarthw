@@ -88,7 +88,7 @@ object TwitterStreamingIngest extends Serializable {
     * @return
     */
   def sparkSession(cbUsername: String, cbPasswd: String): SparkSession = {
-    SparkSession.builder().master("local")
+    SparkSession.builder()//.master("local")
       .appName("TwitterStreaming")
       .config("spark.couchbase.nodes", "127.0.0.1") // connect to couchbase on localhost
       .config("spark.couchbase.bucket.twitter", "")
