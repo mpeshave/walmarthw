@@ -97,12 +97,13 @@ Second iteration could be a full streaming pipeline where the java applcaition i
 http and pushing them into a kafka stream.
 
 3) What would a production-ready solution entail that a POC wouldn't?
-    1) Requirements on what transformation/cleanup on the data are needed before storing it. 
-    2) Standard file storage format(avro parquet) for log files, that can handle changing schema and compression.
-    3) Scalable ingestion pipeline based on load.
-    4) Better document compression and storage in couchbase. Changed document schema that represents information in a
+    1) Most important would be a backfill/replay mechanism in case of failure. 
+    2) Requirements on what transformation/cleanup on the data are needed before storing it. 
+    3) Standard file storage format(avro parquet) for log files, that can handle changing schema and compression.
+    4) Scalable ingestion pipeline based on load.
+    5) Better document compression and storage in couchbase. Changed document schema that represents information in a
     better way.
-    5) Checks and validations at various stages of the pipeline.
+    6) Checks and validations at various stages of the pipeline.
 
 4) What is the level of effort required to deliver each phase of the solution?
 Assuming level of effort in sprints, each phase will take up to sprint and half to two sprints with 2 
