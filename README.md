@@ -91,7 +91,9 @@ to be able to connect to the new couchbase cluster. As this will be a long runni
 be to setup monitoring around the nodes/cluster this spark application runs on. As each component is added one at a 
 time, integration testing will be needed as well as data validation. To start with these processes can be manual 
 but eventually these can be automated. If this is to be moved to cloud, setting up process 
-networking/permissions/roles and required infrastructure will also need to be considered.
+networking/permissions/roles and required infrastructure will also need to be considered. 
+Second iteration could be a full streaming pipeline where the java applcaition is consuming tweets over 
+http and pushing them into a kafka stream.
 
 What would a production-ready solution entail that a POC wouldn't?
 1) Requirements on what transformation/cleanup on the data are needed before storing it. 
