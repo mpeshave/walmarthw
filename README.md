@@ -54,14 +54,59 @@ java -Dcb.username=$CB_USERNAME -Dcb.passwd=$CB_PASSWD -Dtwitter.consumerKey=$TW
 -Dtwitter.accessSecret=$TWITTER_ACCESS_SECRET \ 
 -cp ./target/walmarthw-1.0-SNAPSHOT.jar com.mpeshave.walmarthw.TwitterStreamingClient
 
-The java application will start writing files to ./log/ directory.
+The java application will start writing files to ./log/ directory. The java app will start printing
+counts of tweets consumed.
 
 3) Let the java application run for a couple of mins as the spark application will start looking for log files.
-4) Run spark application:
+4) Open a second terminal to run spark application:
 spark-submit --master local[2] --driver-memory 4g \ 
 --conf 'spark.driver.extraJavaOptions=-Dcb.username=$CB_USERNAME -Dcb.passwd=$CB_PASSWD' \
 --class com.mpeshave.walmarthw.TwitterStreamingIngest ./target/walmarthw-1.0-SNAPSHOT.jar
 
+If everything is setup correctly, documents will start flowing into local couchbase instance.
+
+
+Questions:
+
+1) What are the risks involved in building such a pipeline?
+
+Firstly, as such a pipeline is based on an external dependecy, the external resource may change without
+notification which may cause failures of the ingestion pipeline or receive inconsitent/corrupt data.
+Secondly, setting up the pipeline as single process program wouldnt be efficient. So, it will need to be 
+split up into multiple component. Having multiple components running in union proves another challenge,
+as all the components must be monitored and maintained. Testing such a pipeline end to end is also cumbersome
+and requires validations and checks at multiple places.  
+
+2) How would you roll out the pipeline going from proof-of-concept to a production-ready solution?
+
+As the pipeline is split up into multiple components, each components can worked on independently to be pushed
+to prod. To start with, the first ingestion component(ingest - consuming the data from twitter) must be worked on.
+The component will need some sort of application monitoring and alerts setup. Also, currently the 1 min log files
+are written to local disk. To productionalise these will need to be moved to some distributed storage. This 
+may require changes to either the application or a separate process move the files to distributed storage. This would
+be a good point to push to pre-prod and do some testing and push the ingestion component to prod.
+A prod couchbase cluster setup would follow next with monitoring and alerting setup around it. Next, would be to
+make changes to the spark streaming application to make it consume files created/stored in cloud storage and changes
+to be able to connect to the new couchbase cluster. As this will be a long running streaming application next would 
+be to setup monitoring around the nodes/cluster this spark application runs on. As each component is added one at a 
+time, integration testing will be needed as well as data validation. To start with these processes can be manual 
+but eventually these can be automated. If this is to be moved to cloud, setting up process 
+networking/permissions/roles and required infrastructure will also need to be considered.
+
+What would a production-ready solution entail that a POC wouldn't?
+1) Requirements on what transformation/cleanup on the data are needed before storing it. 
+2) Standard file storage format(avro parquet) for log files, that can handle changing schema and compression.
+3) Scalable ingestion pipeline based on load.
+4) Better document compression and storage in couchbase. Changed document schema that represents information in a
+better way.
+5) Checks and validations at various stages of the pipeline.
+
+What is the level of effort required to deliver each phase of the solution?
+Assuming level of effort in sprints, each phase will take up to sprint and half to two sprints with 2 
+engineers working.
+
+What is your estimated timeline for delivery for a production-ready solution?
+First iteration of a production ready solution for this may take up to 4 or 5 sprints.
 
 
 
