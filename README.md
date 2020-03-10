@@ -96,19 +96,19 @@ networking/permissions/roles and required infrastructure will also need to be co
 Second iteration could be a full streaming pipeline where the java applcaition is consuming tweets over 
 http and pushing them into a kafka stream.
 
-What would a production-ready solution entail that a POC wouldn't?
-1) Requirements on what transformation/cleanup on the data are needed before storing it. 
-2) Standard file storage format(avro parquet) for log files, that can handle changing schema and compression.
-3) Scalable ingestion pipeline based on load.
-4) Better document compression and storage in couchbase. Changed document schema that represents information in a
-better way.
-5) Checks and validations at various stages of the pipeline.
+3) What would a production-ready solution entail that a POC wouldn't?
+    1) Requirements on what transformation/cleanup on the data are needed before storing it. 
+    2) Standard file storage format(avro parquet) for log files, that can handle changing schema and compression.
+    3) Scalable ingestion pipeline based on load.
+    4) Better document compression and storage in couchbase. Changed document schema that represents information in a
+    better way.
+    5) Checks and validations at various stages of the pipeline.
 
-What is the level of effort required to deliver each phase of the solution?
+4) What is the level of effort required to deliver each phase of the solution?
 Assuming level of effort in sprints, each phase will take up to sprint and half to two sprints with 2 
 engineers working.
 
-What is your estimated timeline for delivery for a production-ready solution?
+5) What is your estimated timeline for delivery for a production-ready solution?
 First iteration of a production ready solution for this may take up to 4 or 5 sprints.
 
 
