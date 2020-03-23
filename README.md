@@ -8,8 +8,9 @@ The project ingests live tweets using the Twitter Streaming API into a Couchbase
 setup using the following tech:
 1) Java 8
 2) Spark 2.2.0
-3) Couchbase 6.x
-3) Twitter4j - open source repo providing a wrapper over Twitter Streaming API.
+3) Scala 2.11
+4) Couchbase 6.x
+5) Twitter4j - open source repo providing a wrapper over Twitter Streaming API.
 
 The data pipeline as seen in the image has 4 components:
 1) Java application - uses the Twitter4j Streaming API to pull live tweets. The application writes it to a 
