@@ -144,35 +144,53 @@ public class TwitterStreamingClient {
             accessSecret = System.getProperty("twitter.accessSecret");
 
             if (cbUsername == null || cbUsername.isEmpty()) {
-                throw new IllegalArgumentException("cb.username must not be null or empty");
+                //throw new IllegalArgumentException("cb.username must not be null or empty");
+                System.out.println("cb.username must not be null or empty");
+                System.exit(-1);
             }
 
             if (cbPasswd == null || cbPasswd.isEmpty()) {
-                throw new IllegalArgumentException("cb.passwd must not be null or empty");
+                //throw new IllegalArgumentException("cb.passwd must not be null or empty");
+                System.out.println("cb.passwd must not be null or empty");
+                System.exit(-1);
             }
 
             if (consumerKey == null || consumerKey.isEmpty()) {
-                throw new IllegalArgumentException("twitter.consumerKey must not be null or empty");
+                //throw new IllegalArgumentException("twitter.consumerKey must not be null or empty");
+                System.out.println("twitter.consumerKey must not be null or empty");
+                System.exit(-1);
             }
 
             if (consumerSecret == null || consumerSecret.isEmpty()) {
-                throw new IllegalArgumentException("twitter.consumerSecret must not be null or empty");
+                //throw new IllegalArgumentException("twitter.consumerSecret must not be null or empty");
+                System.out.println("twitter.consumerSecret must not be null or empty");
+                System.exit(-1);
             }
 
             if (accessToken == null || accessToken.isEmpty()) {
-                throw new IllegalArgumentException("twitter.accessToken must not be null or empty");
+                //throw new IllegalArgumentException("twitter.accessToken must not be null or empty");
+                System.out.println("twitter.accessToken must not be null or empty");
+                System.exit(-1);
             }
 
             if (accessSecret == null || accessSecret.isEmpty()) {
-                throw new IllegalArgumentException("twitter.accessSecret must not be null or empty");
+                //throw new IllegalArgumentException("twitter.accessSecret must not be null or empty");
+                System.out.println("twitter.accessSecret must not be null or empty");
+                System.exit(-1);
             }
 
-            rootLogger.info("Consumer Key: " + consumerKey);
-            rootLogger.info("Consumer Secrent: " + consumerSecret);
-            rootLogger.info("Access Token: " + accessToken);
-            rootLogger.info("Access Secret: " + accessSecret);
+            System.out.println("Couchbase username: " + cbUsername);
+            System.out.println("Couchbase passwd: " + cbPasswd);
+            System.out.println("Consumer Key: " + consumerKey);
+            System.out.println("Consumer Secrent: " + consumerSecret);
+            System.out.println("Access Token: " + accessToken);
+            System.out.println("Access Secret: " + accessSecret);
+            System.out.println("------------------------------------------------");
 
             new TwitterStreamingClient(cbUsername, cbPasswd, consumerKey, consumerSecret, accessToken, accessSecret).execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.exit(-1);
         } finally {
             //TODO - perform clean up before exiting.
         }
@@ -267,7 +285,8 @@ public class TwitterStreamingClient {
                     twitterStream.filter(new FilterQuery()
                             .track(new String[]{"justin bieber","Justin Bieber","JustinBieber","JUSTINBBIEBER", "justinbieber"}));
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
+                    System.out.println(e.getMessage());
                     System.exit(-1);
                 }
             }
