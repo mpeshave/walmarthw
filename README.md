@@ -36,6 +36,14 @@ separately without disturbing the other.
 
 
 Steps to setup and run the data pipeline:
+
+Twitter Keys
+Consumer Key: omT2Me3Nizb2P02BcpQabhFUW
+Consumer Secret: S3P4zAM4WBpqdfuwraHcf9Ea27Wqo04PRULhx9jkyOrGFS3AK5
+Access token: 1666173588-iEEYxQBeAfyYdgVL8OKUU8BxCOo0XDnjBHZI5TU
+Access token secret: sIfsKPtfEEmgTCMeODScGgF1J0K8ZsYelZc4r8SV6zeDe
+
+
 1) Java 8 - Check if java 8 is installed.
     TYS-PDT-170981:~ mpeshave$ java -version
     java version "1.8.0_181"
