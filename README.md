@@ -279,6 +279,16 @@ The third tweet doesnt contain a filter word, so spark application does not filt
 ![Image description](test6.png)
 The fourth tweet doesnt contain a filter word, so spark application does not filter out this tweet and pushes it to CB.
 
+4) Now lets tweets that dont contain "justin bieber". These tweet should not be received by our java application. 2 tweets
+that dont contain "justin bieber".
+![Image description](test8.png)
+
+5) Give the java application a min or so, to receive live tweets. The reason to wait is that there is a bit of a lag between
+when the tweets are created and our applications receive the live tweets. Now cat all twitter log file and grep on
+your user name. In my case, I greped on Mitesh. You will see only the previous 4 tweets but not the 2 new tweets that dont
+have justin bieber in them
+![Image description](test9.png)
+
 Questions:
 
 1) What are the risks involved in building such a pipeline?
