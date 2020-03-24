@@ -266,7 +266,7 @@ To test the pipeline:
 tweets by myself. This will give you a list of of your tweets in the logs and associated tweet id. 
 ![Image description](test2.png)
 
-3) For all tweet ids in couchbase.
+3) Lets check for all the 4 tweets that I created, which we could see in the twitter log files. 
 ![Image description](test3.png)
 As the first tweet contains a filter word, the spark application filters out the tweet and does not add to CB.
 
