@@ -45,28 +45,35 @@ Access token secret: sIfsKPtfEEmgTCMeODScGgF1J0K8ZsYelZc4r8SV6zeDe
 
 
 1) Java 8 - Check if java 8 is installed.
+```
     TYS-PDT-170981:~ mpeshave$ java -version
     java version "1.8.0_181"
     Java(TM) SE Runtime Environment (build 1.8.0_181-b13)
     Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
+```
 
 If java is not installed, install java 8 and setup the JAVA_HOME correctly.
 
 2) cd to home dir or dir to download and setup code and other components. I assume, this will be setup in home dir.
 Create a folder in home dir to download code and other components:
+```
     TYS-PDT-170981:~ mpeshave$ pwd
     /Users/mpeshave
     TYS-PDT-170981:~ mpeshave$ mkdir mpeshave_walmarthw
     TYS-PDT-170981:~ mpeshave$
+```
 
 3) cd into mpeshave_walmarthw
+```
     TYS-PDT-170981:~ mpeshave$ cd mpeshave_walmarthw/
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ pwd
     /Users/mpeshave/mpeshave_walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ ls
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$
+```
 
 4) Download code from git repo:
+```
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ pwd
     /Users/mpeshave/mpeshave_walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ ls
@@ -85,16 +92,20 @@ Create a folder in home dir to download code and other components:
     TYS-PDT-170981:walmarthw mpeshave$ ls
     1.png		2.png		3.png		README.md	pipeline.jpeg	pom.xml		src
     TYS-PDT-170981:walmarthw mpeshave$ 
+```
 
 5) Go back to parent dir
+```
     TYS-PDT-170981:walmarthw mpeshave$ cd ..
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ ls
     walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ pwd
     /Users/mpeshave/mpeshave_walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$
+```
 
 6) Download spark 2.2.0 in the mpeshave_walmarthw dir:
+```
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ pwd
     /Users/mpeshave/mpeshave_walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ curl -o spark-2.2.0-bin-hadoop2.7.tgz https://archive.apache.org/dist/spark/spark-2.2.0/spark-2.2.0-bin-hadoop2.7.tgz
@@ -104,8 +115,10 @@ Create a folder in home dir to download code and other components:
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ ls
     spark-2.2.0-bin-hadoop2.7.tgz	walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$
+```
 
 7) Untar the spark 2.2.0 tar file
+```
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ pwd
     /Users/mpeshave/mpeshave_walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ ls 
@@ -132,14 +145,17 @@ Create a folder in home dir to download code and other components:
     x spark-2.2.0-bin-hadoop2.7/README.md
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ ls
     spark-2.2.0-bin-hadoop2.7	spark-2.2.0-bin-hadoop2.7.tgz	walmarthw
+```
 
 8) Setp SPARK_HOME env:
+```
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ pwd
     /Users/mpeshave/mpeshave_walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ ls
     spark-2.2.0-bin-hadoop2.7	spark-2.2.0-bin-hadoop2.7.tgz	walmarthw
     TYS-PDT-170981:mpeshave_walmarthw mpeshave$ export SPARK_HOME=~/mpeshave_walmarthw/spark-2.2.0-bin-hadoop2.7
-    
+```
+
 9) Download and setup couchbase: https://www.couchbase.com/downloads locally. Instrucution to download and install 
 CB are in the video. It is easy to download and install couchbase locally. During setup, you will have to setup
 admin username and password. This will be needed when running java application and spark application.
@@ -147,32 +163,35 @@ admin username and password. This will be needed when running java application a
 10) Once the couchbase is setup and running, create a bucket with name - "twitter" through UI. Create the bucket without
 a password.
 
-11) cd ~/mpeshave_walmarthw/walmarthw 
+11) ```cd ~/mpeshave_walmarthw/walmarthw ```
 
-12) mkdir -p logs/ingest
+12) ```mkdir -p logs/ingest```
 
 13) Go to ~/mpeshave_walmarthw/walmarthw and build the jar:
+```    
     TYS-PDT-170981:walmarthw mpeshave$ pwd
     /Users/mpeshave/mpeshave_walmarthw/walmarthw
     TYS-PDT-170981:walmarthw mpeshave$ ls
     1.png		2.png		3.png		README.md	pipeline.jpeg	pom.xml		src
     TYS-PDT-170981:walmarthw mpeshave$ mvn clean package
-    
-    This will successfullt buidl the jar in target folder.
+```    
+   This will successfullt buidl the jar in target folder.
 
 14) Ready to run java streaming client:
+```
     java -Dcb.username=$COUCHBASE_USERNAME -Dcb.passwd=$COUCHBASE_PASSWD \ 
     -Dtwitter.consumerKey=omT2Me3Nizb2P02BcpQabhFUW \
     -Dtwitter.consumerSecret=S3P4zAM4WBpqdfuwraHcf9Ea27Wqo04PRULhx9jkyOrGFS3AK5 \
     -Dtwitter.accessToken=1666173588-iEEYxQBeAfyYdgVL8OKUU8BxCOo0XDnjBHZI5TU \
     -Dtwitter.accessSecret=sIfsKPtfEEmgTCMeODScGgF1J0K8ZsYelZc4r8SV6zeDe \
     -cp ./target/walmarthw-1.0-SNAPSHOT.jar com.mpeshave.walmarthw.TwitterStreamingClient
-    
-    P.S.: REMEMBER TO REPLACE $COUCHBASE_USERNAME and $COUCHBASE_PASSWD variables with actual username and password for
-    local couchbase instance.
+```    
+   P.S.: REMEMBER TO REPLACE $COUCHBASE_USERNAME and $COUCHBASE_PASSWD variables with actual username and password for
+   local couchbase instance.
     
 15) If there is an issue, the application will print on the screen. If there is no issue the following will be seen:
-    TYS-PDT-170981:walmarthw mpeshave$ java -Dcb.username=admin -Dcb.passwd=mit83214 -Dtwitter.consumerKey=omT2Me3Nizb2P02BcpQabhFUW  -Dtwitter.consumerSecret=S3P4zAM4WBpqdfuwraHcf9Ea27Wqo04PRULhx9jkyOrGFS3AK5 -Dtwitter.accessToken=1666173588-iEEYxQBeAfyYdgVL8OKUU8BxCOo0XDnjBHZI5TU -Dtwitter.accessSecret=sIfsKPtfEEmgTCMeODScGgF1J0K8ZsYelZc4r8SV6zeDe -cp ./target/walmarthw-1.0-SNAPSHOT.jar com.mpeshave.walmarthw.TwitterStreamingClient
+```   
+   TYS-PDT-170981:walmarthw mpeshave$ java -Dcb.username=admin -Dcb.passwd=mit83214 -Dtwitter.consumerKey=omT2Me3Nizb2P02BcpQabhFUW  -Dtwitter.consumerSecret=S3P4zAM4WBpqdfuwraHcf9Ea27Wqo04PRULhx9jkyOrGFS3AK5 -Dtwitter.accessToken=1666173588-iEEYxQBeAfyYdgVL8OKUU8BxCOo0XDnjBHZI5TU -Dtwitter.accessSecret=sIfsKPtfEEmgTCMeODScGgF1J0K8ZsYelZc4r8SV6zeDe -cp ./target/walmarthw-1.0-SNAPSHOT.jar com.mpeshave.walmarthw.TwitterStreamingClient
     log4j:WARN No appenders could be found for logger (root).
     log4j:WARN Please initialize the log4j system properly.
     log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
@@ -183,11 +202,13 @@ a password.
     Total Tweets Consumed(over http by twitter4j client): 209
     Unique Tweets Consumed(processed and stored in CB): 1
     Tweets Consumed Current Session(received over http by twitter4j client): 209
-      
+```
+
 16) Let the java application run for a couple of mins. The application must be printing out number of tweets consumed.
-To check the log file, cd logs/. To check if the minute files are rolled over cd logs/ingest.
+To check the log file, ```cd logs/```. To check if the minute files are rolled over ```cd logs/ingest```.
 
 17) Open a new terminal window and cd into ~/mpeshave_walmarthw/walmarthw directory.
+```
     TYS-PDT-170981:~ mpeshave$ pwd
     /Users/mpeshave
     TYS-PDT-170981:~ mpeshave$ cd mpeshave_walmarthw/
@@ -199,20 +220,21 @@ To check the log file, cd logs/. To check if the minute files are rolled over cd
     TYS-PDT-170981:walmarthw mpeshave$ pwd
     /Users/mpeshave/mpeshave_walmarthw/walmarthw
     TYS-PDT-170981:walmarthw mpeshave$
-
+```
 18) Setup SPARk_HOME again:
-    TYS-PDT-170981:walmarthw mpeshave$ export SPARK_HOME=~/mpeshave_walmarthw/spark-2.2.0-bin-hadoop2.7
+    ```TYS-PDT-170981:walmarthw mpeshave$ export SPARK_HOME=~/mpeshave_walmarthw/spark-2.2.0-bin-hadoop2.7```
     
 19) Run spark application:
-     ~/mpeshave_walmarthw/spark-2.2.0-bin-hadoop2.7/bin/spark-submit --master local[2] --driver-memory 4g \
+```     
+    ~/mpeshave_walmarthw/spark-2.2.0-bin-hadoop2.7/bin/spark-submit --master local[2] --driver-memory 4g \
      --conf 'spark.driver.extraJavaOptions=-Dcb.username=$COUCHBASE_USERNAME -Dcb.passwd=$COUCHBASE_PASSWD' \
      --class com.mpeshave.walmarthw.TwitterStreamingIngest ./target/walmarthw-1.0-SNAPSHOT.jar
-    
-    P.S.: REMEMBER TO REPLACE $COUCHBASE_USERNAME and $COUCHBASE_PASSWD variables with actual username and password for
+```    
+   P.S.: REMEMBER TO REPLACE $COUCHBASE_USERNAME and $COUCHBASE_PASSWD variables with actual username and password for
         local couchbase instance.
     
-    Give a few seconds and check the java applications terminal. The unique count of tweet in CB must have increased.
-    Also check the couchbase UI and check item count.
+   Give a few seconds and check the java applications terminal. The unique count of tweets in CB should have increased.
+   Also check the couchbase UI and check item count.
     
     
 Output Screenshots:
