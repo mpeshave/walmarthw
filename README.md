@@ -39,6 +39,7 @@ Link to video, going over setup, execution and testing: https://www.youtube.com/
 Steps to setup and run the data pipeline:
 
 Twitter Keys
+
 Consumer Key: omT2Me3Nizb2P02BcpQabhFUW
 Consumer Secret: S3P4zAM4WBpqdfuwraHcf9Ea27Wqo04PRULhx9jkyOrGFS3AK5
 Access token: 1666173588-iEEYxQBeAfyYdgVL8OKUU8BxCOo0XDnjBHZI5TU
