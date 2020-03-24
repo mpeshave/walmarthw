@@ -34,6 +34,7 @@ The data pipeline is split up into 2 working process.
 Splitting up the data pipeline into such component will make it ease to monitor and maintain each component
 separately without disturbing the other.
 
+Link to video, going over setup, execution and testing: https://www.youtube.com/watch?v=Axu7DFL3zYU&feature=youtu.be
 
 Steps to setup and run the data pipeline:
 
