@@ -231,6 +231,30 @@ Bottom Left: Java Application showing running counts.
 Bottom Right: Spark Streaming Application running and consuming files.
 ![Image description](3.png)
 
+Testing:
+
+To test the pipeline:
+
+1) Write tweets, couple with filter words and couple without filter words:
+![Image description](test1.png)
+
+2) After a min, cat all the log files and grep on your username in twitter. In my case, I used my first name to find
+tweets by myself. This will give you a list of of your tweets in the logs and associated tweet id. 
+![Image description](test2.png)
+
+3) For all tweet ids in couchbase.
+![Image description](test3.png)
+As the first tweet contains a filter word, the spark application filters out the tweet and does not add to CB.
+
+![Image description](test4.png)
+As the second tweet also contains a filter word, the spark application filters out the tweet and does not add to CB.
+
+![Image description](test5.png)
+The third tweet doesnt contain a filter word, so spark application does not filter out this tweet and pushes it to CB.
+
+![Image description](test6.png)
+The fourth tweet doesnt contain a filter word, so spark application does not filter out this tweet and pushes it to CB.
+
 Questions:
 
 1) What are the risks involved in building such a pipeline?
