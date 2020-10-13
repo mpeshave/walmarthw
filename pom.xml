@@ -22,7 +22,7 @@
         <jodatime.version>2.8.2</jodatime.version>
         <rogach.version>3.0.2</rogach.version>
         <holdenkarau.version>2.2.0_0.9.0</holdenkarau.version>
-        <junit.version>4.11</junit.version>
+        <junit.version>4.13.1</junit.version>
         <scalatest.version>3.0.2</scalatest.version>
         <cb.version>3.0.2</cb.version>
     </properties>
